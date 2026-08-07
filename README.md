@@ -32,14 +32,31 @@ The project consists of four major phases:
 
 # Dataset
 
-Dataset: CNN/DailyMail
+# Dataset
 
-The dataset contains:
+This project uses the **CNN/DailyMail** news summarization dataset.
 
-- News Articles
-- Human-written summaries
+**Dataset Source (Kaggle):**
 
-The dataset is downloaded automatically using the Hugging Face Datasets library.
+https://www.kaggle.com/datasets/gowrishankarp/newspaper-text-summarization-cnn-dailymail
+
+### Download Instructions
+
+1. Download the dataset from the Kaggle link above.
+2. Extract the downloaded archive.
+3. Copy the following files into the `data/raw/` directory:
+
+```text
+data/
+└── raw/
+    ├── train.csv
+    ├── validation.csv
+    └── test.csv
+```
+
+The preprocessing script expects the files to have the above names.
+
+> **Note:** The dataset is not included in this repository because of GitHub's file size limitations.
 
 ---
 
@@ -172,11 +189,54 @@ Evaluation
 
 ## Step 1 — Preprocessing
 
+## Step 1 — Dataset Preparation & Preprocessing
+
+Before running the preprocessing script, download the CNN/DailyMail dataset from Kaggle and place the dataset files in:
+
+```text
+data/raw/
+```
+
+Expected directory structure:
+
+```text
+data/
+├── raw/
+│   ├── train.csv
+│   ├── validation.csv
+│   └── test.csv
+└── processed/
+```
+
+Run the preprocessing script:
+
 ```bash
 python src/preprocess.py
 ```
 
-Downloads, cleans, tokenizes and prepares the dataset.
+The preprocessing script performs the following operations:
+
+* Loads the `train`, `validation`, and `test` datasets.
+* Merges all dataset splits into a single DataFrame.
+* Removes unnecessary columns (such as `id`).
+* Converts text to lowercase.
+* Performs sentence and word tokenization.
+* Removes punctuation and English stopwords.
+* Applies WordNet lemmatization.
+* Creates separate tokenized columns for:
+
+  * `article_tokenized`
+  * `highlights_tokenized`
+* Saves the processed dataset to:
+
+```text
+data/processed/preprocessed_dataset.csv
+```
+
+This processed dataset is then used for Transformer model training.
+
+Loads the manually downloaded CNN/DailyMail dataset from `data/raw/`, performs text preprocessing and tokenization, and saves the processed dataset to `data/processed/` for model training.
+
 
 ---
 

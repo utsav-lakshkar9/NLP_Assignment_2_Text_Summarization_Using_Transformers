@@ -59,11 +59,11 @@ def main():
     #Drop Id
     raw_data.drop(columns=["id"], errors="ignore", inplace=True)
 
-    print(raw_data.head())
-    print(f"Total samples: {len(raw_data)}")
+    #print(raw_data.head())
+    #print(f"Total samples: {len(raw_data)}")
 
     df=pre_processing(raw_data)  
-    print(df.head())
+    #print(df.head())
 
     output_file = os.path.join(OUTPUT_DIR, "preprocessed_dataset.csv")
     df.to_csv(output_file, index=False)
