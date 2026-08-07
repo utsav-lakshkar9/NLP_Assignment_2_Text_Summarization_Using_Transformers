@@ -1,0 +1,8 @@
+pandas
+numpy
+transformers
+torch
+sentencepiece
+scikit-learn
+ipykernel
+nltk
