@@ -32,8 +32,6 @@ The project consists of four major phases:
 
 # Dataset
 
-# Dataset
-
 This project uses the **CNN/DailyMail** news summarization dataset.
 
 **Dataset Source (Kaggle):**
