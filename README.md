@@ -187,8 +187,6 @@ Evaluation
 
 # Running the Project
 
-## Step 1 — Preprocessing
-
 ## Step 1 — Dataset Preparation & Preprocessing
 
 Before running the preprocessing script, download the CNN/DailyMail dataset from Kaggle and place the dataset files in:
